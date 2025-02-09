@@ -164,8 +164,13 @@ class ForelVisualizer {
         this.currentStep = 0;
         this.clusters = [];
         this.clusterColors.clear();
+        this.isAnimating = false;
         this.updateStepCounter();
         this.redraw();
+
+        const startPauseButton = document.getElementById('startPause');
+        startPauseButton.innerHTML = 'Start<span>▶️</span>';
+        startPauseButton.classList.remove('paused'); // Remove paused state
     }
 
     generateClusters() {
