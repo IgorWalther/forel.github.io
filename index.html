@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>FOREL Algorithm Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="canvas-container">
+    <canvas id="mainCanvas"></canvas>
+</div>
+<div class="controls">
+    <div class="control-group">
+        <h3>UI Color</h3>
+        <div class="night-mode-toggle" id="nightModeToggle" style="display: flex; gap: 10px;">🌙 Night Mode</div>
+    </div>
+
+    <div class="control-group">
+        <h3>Presets</h3>
+        <select id="presets">
+            <option value="custom">Custom</option>
+            <option value="two_clusters">Two Clusters</option>
+            <option value="overlapping">Overlapping</option>
+            <option value="noise">With Noise</option>
+            <option value="circle">Circle</option>
+            <option value="spiral">Spiral</option>
+            <option value="grid">Grid</option>
+            <option value="concentric_circles">Concentric Circles</option>
+            <option value="cross">Cross</option>
+            <option value="moon">Moon</option>
+            <option value="random_clusters">Random Clusters</option>
+        </select>
+        <div class="preset-description" id="presetDescription">
+            <strong>Custom:</strong> Добавляйте, удаляйте и перемещайте точки вручную.
+        </div>
+    </div>
+
+    <div class="control-group control-group-edit-mode">
+        <h3>Edit Mode</h3>
+        <div>
+            <button class="mode-btn active" id="modeAdd">Add</button>
+            <button class="mode-btn" id="modeDelete">Delete</button>
+            <button class="mode-btn" id="modeMove">Move</button>
+        </div>
+        <button id="clearCanvas" class="clear-btn">Clear</button>
+    </div>
+
+    <div class="control-group">
+        <h3>Parameters</h3>
+        <label>Radius R: <input type="number" id="paramR" value="50"></label><br>
+        <label>Speed: <input type="number" id="speed" value="500" step="100"></label>
+    </div>
+
+    <div class="control-group">
+        <h3>Display Options</h3>
+        <label>
+            <input type="checkbox" id="showHistory" checked> Show History
+        </label>
+        <label>
+            <input type="checkbox" id="colorClusters" checked> Color Clusters
+        </label>
+    </div>
+
+    <div class="control-group">
+        <h3>Animation Control</h3>
+        <div class="animation-controls">
+            <button id="startPause">
+                Start
+                <span>▶️</span>
+            </button>
+
+            <button id="reset">
+                Reset
+                <span>🔄</span>
+            </button>
+        </div>
+        <div class="step-controls">
+            <button id="stepPrev">
+                Back
+                <span>⏮️</span>
+            </button>
+
+            <button id="stepNext">
+                Next
+                <span>⏭️</span>
+            </button>
+        </div>
+        <div style="margin-top: 10px; text-align: center;">
+            Current Step: <span id="currentStep">0</span>
+        </div>
+    </div>
+</div>
+<script src="main.js"></script>
+</body>
+</html>

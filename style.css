@@ -1,0 +1,289 @@
+body {
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    font-family: Arial, sans-serif;
+    height: calc(100vh - 40px);
+    gap: 20px;
+    background: #ffffff; /* Default day mode background */
+    color: #000000; /* Default day mode text color */
+}
+
+body.night-mode {
+    background: #1e1e1e; /* Night mode background */
+    color: #ffffff; /* Night mode text color */
+}
+
+#canvas-container {
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+}
+
+canvas {
+    border: 1px solid #ccc;
+    background: #f9f9f9; /* Default canvas background */
+    width: 100%;
+    height: 100%;
+}
+
+body.night-mode canvas {
+    background: #2d2d2d; /* Night mode canvas background */
+    border-color: #444;
+}
+
+.controls {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.control-group {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #fafafa; /* Default control group background */
+}
+
+body.night-mode .control-group {
+    background: #333; /* Night mode control group background */
+    border-color: #444;
+}
+
+.control-group h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.animation-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.step-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.animation-controls button,
+.step-controls button {
+    display: flex;
+    flex-direction: column; /* Stack text above emoji */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.2s, transform 0.1s;
+    padding: 10px 12px;
+    height: 60px; /* Ensures enough space */
+}
+
+.animation-controls button span,
+.step-controls button span {
+    display: block; /* Make them appear on separate lines */
+    font-size: 20px; /* Slightly larger emoji */
+    margin-top: 5px; /* Space between text and emoji */
+}
+
+/* Start/Pause button */
+#startPause {
+    background: #4CAF50;
+    color: white;
+    border: 1px solid #3e8e41;
+}
+
+#startPause:hover {
+    background: #45a049;
+}
+
+#startPause.paused {
+    background: #FF9800;
+    border-color: #e68900;
+}
+
+#stepPrev, #stepNext {
+    background: #007BFF;
+    color: white;
+    border: 1px solid #0056b3;
+}
+
+#stepPrev:hover, #stepNext:hover {
+    background: #0056b3;
+}
+
+/* Reset */
+#reset {
+    background: #E53935;
+    color: white;
+    border: 1px solid #b71c1c;
+}
+
+#reset:hover {
+    background: #c62828;
+}
+
+/* Add slight animation feedback */
+button:active {
+    transform: scale(0.95);
+}
+
+button {
+    padding: 10px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #f5f5f5; /* Default button background */
+    font-size: 14px;
+    color: #000; /* Default button text color */
+}
+
+body.night-mode button {
+    background: #444; /* Night mode button background */
+    border-color: #555;
+    color: #fff; /* Night mode button text color */
+}
+
+button:hover {
+    background: #e0e0e0; /* Default button hover background */
+}
+
+body.night-mode button:hover {
+    background: #555; /* Night mode button hover background */
+}
+
+.mode-btn.active {
+    background: #4CAF50;
+    color: white;
+    border-color: #4CAF50;
+}
+
+/* Clear button styling */
+.clear-btn {
+    background: #E53935; /* Red */
+    color: white;
+    border: 1px solid #b71c1c;
+    font-weight: bold;
+    padding: 10px;
+    width: 100%;
+    margin-top: 10px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 6px;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.clear-btn:hover {
+    background: #c62828;
+}
+
+.clear-btn:active {
+    transform: scale(0.95);
+}
+
+/* Ensure the Clear button remains red in Night Mode */
+body.night-mode .clear-btn {
+    background: #D32F2F; /* Slightly darker red for night mode */
+    border-color: #B71C1C;
+    color: white;
+}
+
+body.night-mode .clear-btn:hover {
+    background: #B71C1C;
+}
+
+input[type="number"] {
+    width: 80px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #fff; /* Default input background */
+    color: #000; /* Default input text color */
+}
+
+body.night-mode input[type="number"] {
+    background: #444; /* Night mode input background */
+    border-color: #555;
+    color: #fff; /* Night mode input text color */
+}
+
+.control-group label {
+    display: block;
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.control-group-edit-mode div {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between; /* Spread buttons evenly */
+}
+
+/* Ensure buttons take equal width */
+.mode-btn {
+    flex: 1;
+    text-align: center;
+}
+
+select {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    background: #fff; /* Default select background */
+    color: #000; /* Default select text color */
+}
+
+body.night-mode select {
+    background: #444; /* Night mode select background */
+    border-color: #555;
+    color: #fff; /* Night mode select text color */
+}
+
+.preset-description {
+    margin-top: 10px;
+    padding: 10px;
+    background: #f9f9f9; /* Default description background */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #555; /* Default description text color */
+}
+
+body.night-mode .preset-description {
+    background: #333; /* Night mode description background */
+    border-color: #444;
+    color: #ccc; /* Night mode description text color */
+}
+
+.preset-description strong {
+    color: #000; /* Default strong text color */
+}
+
+body.night-mode .preset-description strong {
+    color: #fff; /* Night mode strong text color */
+}
+
+.night-mode-toggle {
+    top: 20px;
+    right: 20px;
+    padding: 10px;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+body.night-mode .night-mode-toggle {
+    background: #444;
+    border-color: #555;
+    color: #fff;
+}
